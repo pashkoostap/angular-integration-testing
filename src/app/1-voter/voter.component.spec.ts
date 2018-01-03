@@ -34,4 +34,12 @@ describe('VoterComponent', () => {
 
     expect(debugElement.classes['highlighted']).toBeTruthy();
   });
+
+  it('should increase total votes when I click the upvote button', () => {
+    let debugElement = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+
+    debugElement.triggerEventHandler('click', null);
+
+    expect(component.totalVotes).toBe(1);
+  });
 });
