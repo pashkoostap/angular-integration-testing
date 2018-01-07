@@ -8,7 +8,7 @@ import { UserDetailsComponent } from './user-details.component';
 import { Observable } from 'rxjs/Observable';
 
 class RouterStub {
-  navigation(params) {}
+  navigate(params) {}
 }
 
 class RouterActivatedStub {
@@ -41,7 +41,12 @@ describe('UserDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should redirect the user to the users page after saving', () => {
+    let router = TestBed.get(Router);
+    let spy = spyOn(router, 'navigate');
+
+    component.save();
+
+    expect(spy).toHaveBeenCalledWith(['users']);
   });
 });
